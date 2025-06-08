@@ -28,12 +28,8 @@ public class SignValidator {
                 if (actual == ')' && tope != '(' || actual == ']' && tope != '[' || actual == '}' && tope != '{'){
                     return false;
                 }
-
-            } else {
-                return false;
-            }
+            }else {return false;}
         }
-
         return pila.isEmpty();
     }
 }

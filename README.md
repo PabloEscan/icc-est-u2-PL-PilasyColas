@@ -1,4 +1,3 @@
-
 # PL - Validación de Signos y Ordenamiento de Pilas Genéricas
 
 ## 📌 Información General
@@ -13,21 +12,23 @@
 ---
 ## 🛠️ Descripción
 
-Este proyecto implementa dos funcionalidades principales usando una estructura de pila genérica (`stackG<T>`):
+Este proyecto implementa dos funcionalidades principales usando estructuras de datos genéricas (`stackG<T>` y `QueueG<T>`):
 
-1. **Validación de signos cerrados:**  
-   Utiliza una pila para verificar si una cadena que contiene paréntesis, llaves y corchetes esten comparentados (cerrados).  
-   - Retorna `true` si los elementos estan cerraados correctamente, y `false` en caso contrario.
+1. **Validación de signos balanceados:**  
+   Utiliza una cola (`QueueG<Character>`) para procesar los caracteres de la cadena en orden y una pila (`stackG<Character>`) para validar el correcto cierre de los signos.  
+   - Soporta los signos: `()`, `{}`, `[]`.  
+   - Retorna `true` si todos los signos tienen un cierre, y `false` en caso contrario.
 
-2. **Ordenamiento de enteros:**  
+2. **Ordenamiento de pila de enteros:**  
    Implementa un algoritmo para ordenar los elementos de una pila de enteros en orden ascendente usando una pila auxiliar.  
-   - Se utiliza la clase `StackSorter` que ordena la pila.
+   - Se utiliza la clase `StackSorter` que ordena la pila in-place sin usar estructuras externas distintas a una pila auxiliar.
 
-La pila genérica está implementada con nodos enlazados (`NodeGeneric<T>`) y soporta operaciones básicas como `push`, `pop`, `peek`, `isEmpty`, y algunos extras como `printStack`.
+La pila genérica está implementada con nodos enlazados (`NodeGeneric<T>`) y soporta operaciones básicas como `push`, `pop`, `peek`, `isEmpty`, y métodos extra como `printStack`.
 
 ---
 ---
-## 🧑‍💻 Ejemplo de entrada
+## 🧑‍💻 Ejemplo de Uso
+
 
 ```java
 public class App {
@@ -64,10 +65,26 @@ public class App {
 
 - **Clase `stackG<T>`:** Implementación genérica de pila basada en nodos enlazados.
 - **Clase `NodeGeneric<T>`:** Nodo genérico con referencia al siguiente nodo.
-- **Clase `SignValidator`:** Valida cadenas con signos balanceados usando pila.
+- **Clase `QueueG<T>`:** Implementación genérica de cola utilizada para recorrer la cadena carácter por carácter.
+- **Clase `SignValidator`:** Valida cadenas con signos balanceados usando una cola y una pila.
 - **Clase `StackSorter`:** Ordena pilas de enteros mediante una pila auxiliar.
----
----
-## 📌 Conclusión
 
-Este proyecto muestra el uso práctico de pilas genéricas para resolver problemas clásicos como validación de signos balanceados y ordenamiento de datos, reforzando conceptos fundamentales de estructuras dinámicas en Java.
+---
+---
+## ⚙️ Cómo compilar y ejecutar
+
+2. Coloca las clases en sus respectivos paquetes (`Materia`, `Ejercicio_01_sign`, `Ejercicio_02_sorting`).
+3. Compila todas las clases:
+   ```bash
+   javac Materia/
+   java Ejercicio_01_sign/
+   java Ejercicio_02_sorting/
+   java App.java
+   ```
+4. Ejecuta la clase principal:
+   ```bash
+   java App
+   ```
+
+---
+---
