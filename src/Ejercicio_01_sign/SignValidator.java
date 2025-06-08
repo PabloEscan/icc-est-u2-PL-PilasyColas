@@ -1,50 +1,39 @@
 package Ejercicio_01_sign;
-
+import Materia.QueueG;
 import Materia.stackG;
 
 public class SignValidator {
 
-    public boolean esValido(String signos) {
-        stackG<Character> stack = new stackG<>();
+        public boolean esValido(String s) {
+        QueueG<Character> cola = new QueueG<>();
 
-        for (int i = 0; i < signos.length(); i++) {
-            char c = signos.charAt(i);
+        for (int i = 0; i < s.length(); i++) {
+            cola.add(s.charAt(i));
+        }
 
-            if (c == '(') {
-                stack.push(c);
-            }else if( c == '{' ){
-                stack.push(c);
-            }else if( c == '['){
-                stack.push(c);
-            }else if (c == ')') {
-                if (stack.isEmpty()) {
+        stackG<Character> pila = new stackG<>();
+
+        while (!cola.isEmpty()) {
+            char actual = cola.remove();
+
+            if (actual == '(' || actual == '[' || actual == '{') {
+                pila.push(actual);
+            } else if (actual == ')' || actual == ']' || actual == '}') {
+                if (pila.isEmpty()){
                     return false;
                 }
-                
-                char top = stack.pop();
-                if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')) {
+
+                char tope = pila.pop();
+
+                if (actual == ')' && tope != '(' || actual == ']' && tope != '[' || actual == '}' && tope != '{'){
                     return false;
                 }
-            }else if (c==']') {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                
-                char top = stack.pop();
-                if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')) {
-                    return false;
-                }
-            }else if (c == '}') {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                
-                char top = stack.pop();
-                if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '[')) {
-                    return false;
-                }
+
+            } else {
+                return false;
             }
         }
-        return stack.isEmpty();
+
+        return pila.isEmpty();
     }
 }

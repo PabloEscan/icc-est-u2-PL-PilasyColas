@@ -3,7 +3,7 @@ import Materia.stackG;
 import Ejercicio_01_sign.SignValidator;
 public class App {
     public static void main(String[] args) throws Exception {
-        String signos = "{([()])}";
+        String signos = "{([()()])}";
         SignValidator sV = new SignValidator();
         boolean tF = sV.esValido(signos);
         System.out.println(tF + "");
